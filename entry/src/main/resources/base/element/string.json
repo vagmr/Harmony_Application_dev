@@ -1,0 +1,32 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "ImagePcs",
+      "value": "图片处理"
+    },
+    {
+      "name": "About",
+      "value": "关于"
+    },
+    {
+      "name": "shopList",
+      "value": "商品列表"
+    },
+    {
+      "name": "Saying",
+      "value": "True generosity towards the future is to give everything to the present."
+    }
+  ]
+}

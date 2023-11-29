@@ -1,0 +1,32 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "ImagePcs",
+      "value": "Image Processing"
+    },
+    {
+      "name": "About",
+      "value": "About"
+    },
+    {
+      "name": "shopList",
+      "value": "shopList"
+    },
+    {
+      "name": "Saying",
+      "value": "True generosity towards the future is to give everything to the present."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "模块描述"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "ImagePcs",
+      "value": "图片处理"
+    },
+    {
+      "name": "About",
+      "value": "关于"
+    },
+    {
+      "name": "shopList",
+      "value": "商品列表"
+    },
+    {
+      "name": "Saying",
+      "value": "对未来真正的慷慨，是把一切都献给现在"
+    }
+  ]
+}
