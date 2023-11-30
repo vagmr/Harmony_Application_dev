@@ -34,7 +34,7 @@ import comHeader from './Header'
   .height('100%')
 }
 
-//继承模式
+//继承模式,可以放事件
 @Extend(Text) function shopText(){
   .fontSize(20)
   .fontColor(Color.Red).fontWeight(300)

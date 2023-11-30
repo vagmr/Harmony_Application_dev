@@ -1,5 +1,6 @@
 import router from '@ohos.router';
- 
+import {getMethod} from  "../../../ohosTest/comTest/Test"
+
 class Navigation{
     public  Title:Resource
     public  Url:String
@@ -37,7 +38,9 @@ struct Index {
           .fontColor(Color.White).margin({left:10,bottom:50})
           .padding(10).backgroundColor("#f13542")
           .border({width:2,radius:5,style:BorderStyle.Solid})
-
+          .onClick(() => {
+            getMethod()
+          })
       Column({space:8}){
        ForEach(this.navigationItem,el=>{
          Button(el.Title).backgroundColor("#ff5fd0b4")
