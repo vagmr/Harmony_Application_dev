@@ -4,6 +4,8 @@
     "pages/ImagePcs",
     "pages/About",
     "pages/shopList",
-    "pages/ShowWeb"
+    "pages/ShowWeb",
+    "pages/TodoList",
+    "pages/StateManagePage"
   ]
 }
