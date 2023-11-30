@@ -3,6 +3,7 @@
     "pages/Index",
     "pages/ImagePcs",
     "pages/About",
-    "pages/shopList"
+    "pages/shopList",
+    "pages/ShowWeb"
   ]
 }

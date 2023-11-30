@@ -1,5 +1,5 @@
-import  comButton from  "../pages/Button"
-import comHeader from './Header'
+import  comButton from "../components/Button"
+import comHeader from '../components/Header'
 // 构建函数
 @Builder function  itemCard(el){
   Row() {

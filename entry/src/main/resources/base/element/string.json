@@ -27,6 +27,10 @@
     {
       "name": "Saying",
       "value": "True generosity towards the future is to give everything to the present."
+    },
+    {
+      "name": "webView",
+      "value": "网页显示"
     }
   ]
 }

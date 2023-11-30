@@ -1,5 +1,5 @@
 import router from '@ohos.router';
-import {getMethod} from  "../../../ohosTest/comTest/Test"
+import {getMethod} from "../../request/requestMethod"
 
 class Navigation{
     public  Title:Resource
@@ -19,7 +19,8 @@ struct Index {
   private  navigationItem:Array<Navigation> = [
     new Navigation($r("app.string.ImagePcs") ,"pages/ImagePcs"),
     new Navigation($r("app.string.About"),"pages/About"),
-   new Navigation($r("app.string.shopList"),"pages/shopList")
+   new Navigation($r("app.string.shopList"),"pages/shopList"),
+  new Navigation($r("app.string.webView"),"pages/ShowWeb")
   ]
 
   build() {
