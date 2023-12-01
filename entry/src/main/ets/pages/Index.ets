@@ -1,6 +1,7 @@
 // 导入路由
 import router from '@ohos.router';
-import {getMethod} from "../../request/requestMethod"
+import {getSaying} from "../../request/methodApi"
+import { Data, sayingType } from '../type/comon_res';
 
 // 规范导航类型
 class Navigation{
@@ -13,12 +14,14 @@ class Navigation{
   }
 }
 
+
 @Entry
 @Component
 struct Index {
   // 声明状态变量
   @State message: string = 'Vagmr App'
-  @State Saying:Resource = $r("app.string.Saying")
+  @State Saying:Resource= $r("app.string.Saying")
+  @State randomText:string = "默认值"
   // 定义导航按钮集合
   private  navigationItem:Array<Navigation> = [
     new Navigation($r("app.string.ImagePcs") ,"pages/ImagePcs"),
@@ -27,7 +30,14 @@ struct Index {
   new Navigation($r("app.string.webView"),"pages/ShowWeb"),
     new Navigation("鸡汤语句","pages/TodoList")
   ]
-
+  getData = async() =>{
+    const str = await getSaying();
+    let res:Data<sayingType> = JSON.parse(str)
+   this.randomText = res.data.content
+  }
+  onPageShow  (){
+    this.getData()
+  }
   build() {
     // 纵向主容器
     Column() {
@@ -70,12 +80,22 @@ struct Index {
       .justifyContent(FlexAlign.SpaceEvenly)
       .alignItems(HorizontalAlign.Center)
       .borderRadius(5)
-      Text(this.Saying).fontSize(20)
-        .width(300).margin({top:80})
-        .textAlign(TextAlign.Center)
-        .height(65).backgroundColor("#ffe9e5e5")
-        .padding(10).border({width:1,radius:5})
-        .fontWeight(400).fontColor("#f13")
+      if(this.randomText){
+        Text(this.randomText).fontSize(20)
+          .width(300).margin({top:80})
+          .textAlign(TextAlign.Center)
+          .height(65).backgroundColor("#ffe9e5e5")
+          .padding(10).border({width:1,radius:5})
+          .fontWeight(400).fontColor("#f13")
+      }else{
+        Text(this.Saying).fontSize(20)
+          .width(300).margin({top:80})
+          .textAlign(TextAlign.Center)
+          .height(65).backgroundColor("#ffe9e5e5")
+          .padding(10).border({width:1,radius:5})
+          .fontWeight(400).fontColor("#f13")
+      }
+
     }    
     .width("100%")
     .height("100%")

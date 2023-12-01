@@ -61,6 +61,8 @@ struct ShopList {
             ListItem() {
              itemCard(el)
             }
+          },(el,index) =>{
+            return el + "vagmr" + index.toString()
           })
         }.layoutWeight(1).width("90%")
 Row(){
