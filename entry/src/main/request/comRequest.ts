@@ -8,11 +8,8 @@ enum RequestMethod {
 }
 // 响应对象的接口
 //添加类型，支持泛型
-interface Data<T> {
-  code: string
-  msg: string
-  result: T
-}
+
+
 
 /**
 * 创建一个HTTP请求实例，并使用指定的方法和数据向指定的URL发送HTTP请求。
@@ -24,10 +21,10 @@ interface Data<T> {
 * 如果请求失败，则返回一个带有错误信息的Promise。
 */
 export const requestInstance =
-  <T>({ url, method = RequestMethod.GET, data }: { url: string, method?: RequestMethod, data?: any })
-    : Promise<Data<T>> => {
+  ({ url, method = RequestMethod.GET, data }: { url: string, method?: RequestMethod, data?: any })
+    : Promise<string> => {
     //返回一个promise对象
-    return new Promise<Data<T>>((resolve, reject) => {
+    return new Promise<string>  ((resolve, reject) => {
       // 每一个httpRequest对应一个HTTP请求任务，不可复用
       let httpRequest = http.createHttp();
       // 用于订阅HTTP响应头，此接口会比request请求先返回。可以根据业务需要订阅此消息
@@ -62,7 +59,7 @@ export const requestInstance =
             // data.header为HTTP响应头，可根据业务需要进行解析
             console.info('header:' + JSON.stringify(data.header));
             console.info('cookies:' + JSON.stringify(data)); // 8+
-            resolve(data.result as Data<T>);
+            resolve(data.result as string);
             // 取消订阅HTTP响应头事件
             httpRequest.off('headersReceive');
             // 当该请求使用完毕时，调用destroy方法主动销毁
