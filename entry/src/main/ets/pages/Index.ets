@@ -7,10 +7,12 @@ import { Data, sayingType } from '../type/comon_res';
 class Navigation{
     public  Title:Resource | string
     public  Url:String
+    public  params?:object
  
-  constructor(Title:Resource | string,Url:String) {
+  constructor(Title:Resource | string,Url:String,params?:object) {
     this.Title = Title;
     this.Url = Url
+    this.params = params
   }
 }
 
@@ -28,16 +30,16 @@ struct Index {
     new Navigation($r("app.string.About"),"pages/About"),
    new Navigation($r("app.string.shopList"),"pages/shopList"),
   new Navigation($r("app.string.webView"),"pages/ShowWeb"),
-    new Navigation("鸡汤语句","pages/TodoList")
+    new Navigation("鸡汤语句","pages/TodoList",{text:"少年不知勤学早，老大方悔读书迟"})
   ]
   getData = async() =>{
     const str = await getSaying();
     let res:Data<sayingType> = JSON.parse(str)
    this.randomText = res.data.content
   }
-  onPageShow  (){
+aboutToAppear(){
     this.getData()
-  }
+}
   build() {
     // 纵向主容器
     Column() {
@@ -72,7 +74,8 @@ struct Index {
            // 点击后跳转到对应页面
            .onClick(() => {
            router.pushUrl({
-             url:el.Url
+             url:el.Url,
+             params:el.params
            })
        })
         })

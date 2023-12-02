@@ -1,7 +1,10 @@
 
 import comButton from '../components/Button'
 import { TodoItems } from '../components/TodoBox'
+import router from '@ohos.router';
 
+
+let text = router.getParams()["text"];
 @Entry
 @Component
 struct TodoList {
@@ -17,7 +20,8 @@ private  todoList = [
   "活在当下，珍惜眼前，不要为过去或未来而忧虑",
   "总有一天，你会离开这个世界，就活出你的人生，这回忆值得你铭记",
   "枯萎的向日葵是抬不起头看太阳的",
-  "行百里者半九十"
+  "行百里者半九十",
+  text
 ]
 
   build() {
@@ -37,10 +41,7 @@ private  todoList = [
           }
             })
         }.layoutWeight(1)
-      Row(){
-        Divider()
-        comButton({positionY:10})
-      }.height(70).backgroundColor("#333")
+        comButton()
 
     } .width('100%')
     .height('100%').alignItems(HorizontalAlign.Center)

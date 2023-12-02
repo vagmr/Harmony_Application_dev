@@ -15,7 +15,7 @@ struct ShowWeb {
               Web({ src: 'https://reblog.vagmrgpt.top/about', controller: this.controller })
                 .height(760)
 
-              comButton({positionX:90,positionY:758})
+              comButton()
             }
           }
         } .layoutWeight(1).width("100%")

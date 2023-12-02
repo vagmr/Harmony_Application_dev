@@ -1,7 +1,7 @@
-import  comButton from "../components/Button"
+import comButton from "../components/Button"
 import comHeader from '../components/Header'
 // 构建函数
-@Builder function  itemCard(el){
+@Builder function itemCard(el) {
   Row() {
     Image(el.img).height("100%")
       .margin({ left: 5 })
@@ -29,13 +29,13 @@ import comHeader from '../components/Header'
   .borderRadius(5)
 }
 // 全局样式
-@Styles function  fullScreen(){
+@Styles function fullScreen() {
   .width('100%')
   .height('100%')
 }
 
 //继承模式,可以放事件
-@Extend(Text) function shopText(){
+@Extend(Text) function shopText() {
   .fontSize(20)
   .fontColor(Color.Red).fontWeight(300)
 }
@@ -45,31 +45,28 @@ import comHeader from '../components/Header'
 @Component
 struct ShopList {
   @State message: string = '商品详情'
-  private  shopList = [
-    {title:"华为Mate60",img:$r("app.media.hwsj"),price:6000,discount:500},
-    {title:"华为Mate60",img:$r("app.media.hwsj"),price:6000},
-    {title:"华为Mate60",img:$r("app.media.hwsj"),price:6000},
-    {title:"华为Mate60",img:$r("app.media.hwsj"),price:6000},
-    {title:"华为Mate60",img:$r("app.media.hwsj"),price:6000},
-    {title:"华为Mate60",img:$r("app.media.hwsj"),price:6000}
+  private shopList = [
+    { title: "华为Mate60", img: $r("app.media.hwsj"), price: 6000, discount: 500 },
+    { title: "华为Mate60", img: $r("app.media.hwsj"), price: 6000 },
+    { title: "华为Mate60", img: $r("app.media.hwsj"), price: 6000 },
+    { title: "华为Mate60", img: $r("app.media.hwsj"), price: 6000 },
+    { title: "华为Mate60", img: $r("app.media.hwsj"), price: 6000 },
+    { title: "华为Mate60", img: $r("app.media.hwsj"), price: 6000 }
   ]
-  build() {
-      Column({space:8}) {
-        comHeader({message:"商品列表"})
-        List({space:10}){
-          ForEach(this.shopList,el => {
-            ListItem() {
-             itemCard(el)
-            }
-          },(el,index) =>{
-            return el + "vagmr" + index.toString()
-          })
-        }.layoutWeight(1).width("90%")
-Row(){
-  Divider()
-  comButton({ buttonText: "back", positionY: 6 })
-}.height(70)
-      }.fullScreen();
-  }
 
+  build() {
+    Column({ space: 8 }) {
+      comHeader({ message: "商品列表" })
+      List({ space: 10 }) {
+        ForEach(this.shopList, el => {
+          ListItem() {
+            itemCard(el)
+          }
+        }, (el, index) => {
+          return el + "vagmr" + index.toString()
+        })
+      }.layoutWeight(1).width("90%")
+        comButton({ buttonText: "back" }).height(70)
+    }.fullScreen();
+  }
 }
