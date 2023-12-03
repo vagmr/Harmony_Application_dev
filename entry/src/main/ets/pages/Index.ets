@@ -28,9 +28,10 @@ struct Index {
   private  navigationItem:Array<Navigation> = [
     new Navigation($r("app.string.ImagePcs") ,"pages/ImagePcs"),
     new Navigation($r("app.string.About"),"pages/About"),
-   new Navigation($r("app.string.shopList"),"pages/shopList"),
-  new Navigation($r("app.string.webView"),"pages/ShowWeb"),
-    new Navigation("鸡汤语句","pages/TodoList",{text:"少年不知勤学早，老大方悔读书迟"})
+    new Navigation($r("app.string.shopList"),"pages/shopList"),
+    new Navigation($r("app.string.webView"),"pages/ShowWeb"),
+    new Navigation("鸡汤语句","pages/TodoList",{text:"少年不知勤学早，老大方悔读书迟"}),
+    new Navigation("导航页","pages/NavigationPage")
   ]
   getData = async() =>{
     const str = await getSaying();

@@ -46,9 +46,11 @@ struct About {
         .justifyContent(FlexAlign.SpaceBetween).width("90%")
         .margin({top:50,left:20}).padding({left:5,right:5})
         .border({width:3,radius:8,color:Color.White})
-        Button("Back").position({x:80,y:690})
-          .width(200).fontSize(25).fontWeight(350)
-          .height(50).onClick(() => {router.back()})
+        Row(){
+          Button("Back")
+            .width(200).fontSize(25).fontWeight(350)
+            .height(50).onClick(() => {router.back()})
+        }.width("100%").height(70).justifyContent(FlexAlign.Center)
       }
       .width('100%')
     .height('100%').alignItems(HorizontalAlign.Start)

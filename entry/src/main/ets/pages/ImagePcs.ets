@@ -69,9 +69,18 @@ struct ImagePcs {
           .onChange(val => {
             this.imgHeight = val
           })
-        Button("Back").position({x:80,y:680})
-          .width(200).fontSize(25).fontWeight(350)
-          .height(50).onClick(() => {router.back()})
+
+       Row(){
+         Button({type:ButtonType.Capsule,stateEffect:true}){
+           Row(){
+             LoadingProgress().width(80).height(50)
+             Text("Back").fontSize(28).fontWeight(350)
+           }.justifyContent(FlexAlign.Start)
+           .width(200)
+         } .width(200)
+         .height(50).onClick(() => {router.back()})
+       }.width("100%").justifyContent(FlexAlign.Center)
+        .height(70)
       }
       .width('100%')
     .height('100%')

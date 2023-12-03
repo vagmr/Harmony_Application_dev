@@ -6,6 +6,7 @@
     "pages/shopList",
     "pages/ShowWeb",
     "pages/TodoList",
-    "pages/StateManagePage"
+    "pages/StateManagePage",
+    "pages/NavigationPage"
   ]
 }

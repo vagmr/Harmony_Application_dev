@@ -1,3 +1,4 @@
+import comButton from '../components/Button'
 @Extend(Text)  function  textCenter(){
   .textAlign(TextAlign.Center).width("100%")
 }
@@ -60,6 +61,7 @@ struct StateManagePage {
           }
         }
         .layoutWeight(1)
+        comButton().margin({top:30,bottom:10})
       }
       .width('100%')
       .height('100%')
