@@ -7,6 +7,9 @@
     "pages/ShowWeb",
     "pages/TodoList",
     "pages/StateManagePage",
-    "pages/NavigationPage"
+    "pages/NavigationPage",
+    "pages/FlexPage",
+    "pages/FruItShow/Home",
+    "pages/FruItShow/MainPage"
   ]
 }
