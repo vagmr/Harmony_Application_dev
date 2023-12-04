@@ -233,7 +233,6 @@ struct MainPage {
       TabContent() {
         barContent()
       }.tabBar(bar(0, "首页", $r("app.media.homesvg")))
-
       TabContent() {
         Column() {
           Text("还在开发中.......").fontSize(35)

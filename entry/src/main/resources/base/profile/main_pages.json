@@ -11,6 +11,7 @@
     "pages/FlexPage",
     "pages/FruItShow/Home",
     "pages/FruItShow/MainPage",
-    "pages/FruItShow/Detail"
+    "pages/FruItShow/Detail",
+    "pages/AnimationTry"
   ]
 }

@@ -23,7 +23,7 @@ struct Index {
   // 声明状态变量
   @State message: string = 'Vagmr App'
   @State Saying:Resource= $r("app.string.Saying")
-  @State randomText:string = "默认值"
+  @State randomText:string = "劝君莫忘少年志，曾许人间第一流"
   // 定义导航按钮集合
   private  navigationItem:Array<Navigation> = [
     new Navigation($r("app.string.ImagePcs") ,"pages/ImagePcs"),
@@ -36,7 +36,9 @@ struct Index {
   getData = async() =>{
     const str = await getSaying();
     let res:Data<sayingType> = JSON.parse(str)
-   this.randomText = res.data.content
+    setTimeout(() => {
+      this.randomText = res.data.content
+    },2000)
   }
 aboutToAppear(){
     this.getData()
@@ -80,13 +82,13 @@ aboutToAppear(){
            })
        })
         })
-      }.height(400).width("100%").backgroundColor("#eee")
+      }.height(460).width("100%").backgroundColor("#eee")
       .justifyContent(FlexAlign.SpaceEvenly)
       .alignItems(HorizontalAlign.Center)
       .borderRadius(5)
       if(this.randomText){
         Text(this.randomText).fontSize(20)
-          .width(300).margin({top:80})
+          .width(300).margin({top:40})
           .textAlign(TextAlign.Center)
           .height(65).backgroundColor("#ffe9e5e5")
           .padding(10).border({width:1,radius:5})
