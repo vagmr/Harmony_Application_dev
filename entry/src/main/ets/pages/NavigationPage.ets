@@ -1,7 +1,7 @@
 import router from '@ohos.router'
 import { getLoveWord } from '../../request/methodApi'
 import toolBarModel from "../DataModel/ToolBarModel"
-import type { Data, wordType } from '../type/comon_res'
+import type { Data, wordType } from '../type/request/comon_res'
 
 @Entry
 @Component

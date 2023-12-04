@@ -1,7 +1,7 @@
 // 导入路由
 import router from '@ohos.router';
 import {getSaying} from "../../request/methodApi"
-import { Data, sayingType } from '../type/comon_res';
+import { Data, sayingType } from '../type/request/comon_res';
 
 // 规范导航类型
 class Navigation{
