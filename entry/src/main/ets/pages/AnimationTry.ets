@@ -1,5 +1,6 @@
 // 第一个tab栏的内容
 import http from '@ohos.net.http'
+import comButton from '../components/Button'
 @Builder function  indexContent(){
   Column() {
     Text(this.title).fontSize(50)
@@ -308,7 +309,7 @@ struct  subContent{
           ,rotate:{angle:360}})
       }
       listBuilder()
-
+      comButton().margin({bottom:5})
     }.width("100%").height("100%")
     .backgroundColor("#ccc")
   }

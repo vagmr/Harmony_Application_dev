@@ -109,7 +109,7 @@ struct NavigationPage {
             .interpolation(ImageInterpolation.High)
             .fillColor("#d1d82767")
           Text(el.text).fontSize(20).fontColor(Color.Black)
-        }.width("33.3%").height(90)
+        }.width("25%").height(90)
         .onClick(() => {
           if (el.routerUrl) {
             router.pushUrl({ url: el.routerUrl })
