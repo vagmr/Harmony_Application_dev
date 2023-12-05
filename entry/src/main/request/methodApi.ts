@@ -2,7 +2,7 @@ import { requestInstance } from './comRequest'
 
 
 export  const getSaying = () => {
-    return requestInstance(
+    return  requestInstance(
       {url:"https://fakeapi.vagmrgpt.top/saying" })
 }
 export const getLoveWord = () => {

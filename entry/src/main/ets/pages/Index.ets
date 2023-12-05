@@ -15,7 +15,15 @@ class Navigation{
     this.params = params
   }
 }
-
+// 显示名言的样式
+@Extend(Text) function  IndexTxtSty(){
+  .fontSize(20)
+  .width(300).margin({top:40})
+  .textAlign(TextAlign.Center)
+  .height(65).backgroundColor("#ffe9e5e5")
+  .padding(10).border({width:1,radius:5})
+  .fontWeight(400).fontColor("#f13")
+}
 
 @Entry
 @Component
@@ -36,12 +44,12 @@ struct Index {
   getData = async() =>{
     const str = await getSaying();
     let res:Data<sayingType> = JSON.parse(str)
-    setTimeout(() => {
       this.randomText = res.data.content
-    },2000)
   }
 aboutToAppear(){
+  setTimeout(() => {
     this.getData()
+  },1000)
 }
   build() {
     // 纵向主容器
@@ -87,21 +95,10 @@ aboutToAppear(){
       .alignItems(HorizontalAlign.Center)
       .borderRadius(5)
       if(this.randomText){
-        Text(this.randomText).fontSize(20)
-          .width(300).margin({top:40})
-          .textAlign(TextAlign.Center)
-          .height(65).backgroundColor("#ffe9e5e5")
-          .padding(10).border({width:1,radius:5})
-          .fontWeight(400).fontColor("#f13")
+        Text(this.randomText).IndexTxtSty()
       }else{
-        Text(this.Saying).fontSize(20)
-          .width(300).margin({top:80})
-          .textAlign(TextAlign.Center)
-          .height(65).backgroundColor("#ffe9e5e5")
-          .padding(10).border({width:1,radius:5})
-          .fontWeight(400).fontColor("#f13")
+        Text(this.Saying).IndexTxtSty()
       }
-
     }    
     .width("100%")
     .height("100%")
