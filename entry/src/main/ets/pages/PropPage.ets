@@ -1,18 +1,19 @@
 
 import comButton from '../components/Button'
 // 任务类
-@Observed
+// @Observed
 class Task{
   static id: number = 0
 
   // 任务名称
   name: string
   constructor(taskName:string) {
-    this.name =  `任务${Task.id+=1}：` + taskName
+    this.name =  `任务${Task.id++}：` + taskName
   }
   // 任务状态：是否完成
   finished: boolean = false
 }
+let  TaskInstance = new Task("测试")
 
 // 统一的卡片样式
 @Styles function card(){
@@ -179,7 +180,7 @@ struct TaskList {
 
 @Component
 struct TaskItem {
-  @ObjectLink item: Task
+ @State item: Task = TaskInstance
   onTaskChange: () => void
 
   build() {
