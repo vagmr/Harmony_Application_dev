@@ -18,8 +18,7 @@ struct NavigationPage {
   @State showInfo: string = "你点了也没有用"
   getWords = async () => {
     try {
-      let resStr = await getLoveWord()
-      const res: Data<wordType[]> = JSON.parse(resStr)
+      let res = await getLoveWord()
       this.wordList.push(...res.data)
     } catch (e) {
       if (e.code = 2300006) {

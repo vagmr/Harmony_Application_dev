@@ -42,8 +42,7 @@ struct Index {
     new Navigation("导航页","pages/NavigationPage")
   ]
   getData = async() =>{
-    const str = await getSaying();
-    let res:Data<sayingType> = JSON.parse(str)
+    const res = await getSaying();
       this.randomText = res.data.content
   }
 aboutToAppear(){

@@ -1,30 +1,28 @@
 // 引入包名
 import http from '@ohos.net.http';
-enum RequestMethod {
+import RequestOptions from '../ets/constant/config';
+import { Data } from "../ets/type/request/comon_res"
+
+export  enum RequestMethod {
   GET = "GET",
   POST = "POST",
   PUT = "PUT",
   DELETE = "DELETE"
 }
-// 响应对象的接口
-//添加类型，支持泛型
-
-
 
 /**
-* 创建一个HTTP请求实例，并使用指定的方法和数据向指定的URL发送HTTP请求。
-*
-* @param {string} url - 将要发送请求的URL。
-* @param {RequestMethod} [method=RequestMethod.GET] - HTTP请求方法。
-* @param {any} data - 需要发送的数据。
-* @return {Promise<Data<T>>} 如果请求成功，则返回一个解析后的响应数据的Promise,可加泛型
-* 如果请求失败，则返回一个带有错误信息的Promise。
-*/
-export const requestInstance =
-  ({ url, method = RequestMethod.GET, data }: { url: string, method?: RequestMethod, data?: any })
-    : Promise<string> => {
+ * 创建一个HTTP请求实例，并使用指定的方法和数据向指定的URL发送HTTP请求。
+ *
+ * @param {string} url - 将要发送请求的URL。
+ * @param {RequestMethod} [method=RequestMethod.GET] - HTTP请求方法。
+ * @param {any} data - 需要发送的数据。
+ * @return {Promise<Data<T>>} 如果请求成功，则返回一个解析后的响应数据的Promise,可加泛型
+ * 如果请求失败，则返回一个带有错误信息的Promise。
+ */
+export const requestInstance = <T>(config: RequestOptions) : Promise<Data<T>> => {
+    const { url, method = RequestMethod.GET, data } = config;
     //返回一个promise对象
-    return new Promise<string>  ((resolve, reject) => {
+    return new Promise<Data<T>>  ((resolve, reject) => {
       // 每一个httpRequest对应一个HTTP请求任务，不可复用
       let httpRequest = http.createHttp();
       // 用于订阅HTTP响应头，此接口会比request请求先返回。可以根据业务需要订阅此消息
@@ -46,33 +44,34 @@ export const requestInstance =
             "data": JSON.stringify(data),
           },
           // expectDataType: http.HttpDataType.STRING, // 可选，指定返回数据的类型
+          expectDataType:http.HttpDataType.OBJECT,
           usingCache: true, // 可选，默认为true
           priority: 1, // 可选，默认为1
           connectTimeout: 80000, // 可选，默认为60000ms
           readTimeout: 60000, // 可选，默认为60000ms
           // usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定
         }, (err, data) => {
-          if (!err) {
-            // data.result为HTTP响应内容，可根据业务需要进行解析
-            console.info('Result:' + JSON.stringify(data.result));
-            console.info('code:' + JSON.stringify(data.responseCode));
-            // data.header为HTTP响应头，可根据业务需要进行解析
-            console.info('header:' + JSON.stringify(data.header));
-            console.info('cookies:' + JSON.stringify(data)); // 8+
-            resolve(data.result as string);
-            // 取消订阅HTTP响应头事件
-            httpRequest.off('headersReceive');
-            // 当该请求使用完毕时，调用destroy方法主动销毁
-            httpRequest.destroy();
-          } else {
-            console.info('error:' + JSON.stringify(err));
-            reject(err);
-            // 取消订阅HTTP响应头事件
-            httpRequest.off('headersReceive');
-            // 当该请求使用完毕时，调用destroy方法主动销毁。
-            httpRequest.destroy();
-          }
+        if (!err) {
+          // data.result为HTTP响应内容，可根据业务需要进行解析
+          console.info('Result:' + JSON.stringify(data.result));
+          console.info('code:' + JSON.stringify(data.responseCode));
+          // data.header为HTTP响应头，可根据业务需要进行解析
+          console.info('header:' + JSON.stringify(data.header));
+          console.info('cookies:' + JSON.stringify(data)); // 8+
+          resolve(data.result as Data<T>);
+          // 取消订阅HTTP响应头事件
+          httpRequest.off('headersReceive');
+          // 当该请求使用完毕时，调用destroy方法主动销毁
+          httpRequest.destroy();
+        } else {
+          console.info('error:' + JSON.stringify(err));
+          reject(err);
+          // 取消订阅HTTP响应头事件
+          httpRequest.off('headersReceive');
+          // 当该请求使用完毕时，调用destroy方法主动销毁。
+          httpRequest.destroy();
         }
+      }
       );
     });
   }

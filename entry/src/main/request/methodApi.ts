@@ -1,11 +1,12 @@
+import { sayingType, wordType } from '../ets/type/request/comon_res'
 import { requestInstance } from './comRequest'
 
 
 export  const getSaying = () => {
-    return  requestInstance(
-      {url:"https://fakeapi.vagmrgpt.top/saying" })
+  return  requestInstance<sayingType>(
+    {url:"https://fakeapi.vagmrgpt.top/saying" })
 }
 export const getLoveWord = () => {
-  return requestInstance
+  return requestInstance<wordType[]>
   ({url:"https://fakeapi.vagmrgpt.top/wordlist"})
 }

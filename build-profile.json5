@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "storePassword": "0000001D636A3551921A25195AE29C7BEC44F13F1EF89E91E046A217596E595077BBED4FA284AD1717C5A42F15",
+          "certpath": "H:/huawei/密钥/vagmr_app.cer",
+          "keyAlias": "vagmr_app",
+          "keyPassword": "0000001D51DAC4201A8E502A65BB28F5C8FA7A742A524CB56F3CD675CF43E0EBC8AC75A87F9D6D29DF04F6995C",
+          "profile": "H:/huawei/密钥/vagmr_appRelease.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "H:/huawei/密钥/vagmr_app.p12"
+        }
+      }
+    ],
     "compileSdkVersion": 9,
     "compatibleSdkVersion": 9,
     "products": [

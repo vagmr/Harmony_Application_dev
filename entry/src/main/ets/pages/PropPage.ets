@@ -48,6 +48,7 @@ struct PropPage {
       // 1.任务进度卡片
       TaskStatistics()
       TextInput({placeholder:"输入任务信息:"})
+        .type(InputType.Normal)
         .width("90%").height(50)
         .placeholderFont({size:20})
         .placeholderColor(Color.Brown)
