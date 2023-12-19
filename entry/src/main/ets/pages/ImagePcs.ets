@@ -1,4 +1,5 @@
 import router from '@ohos.router';
+
 @Entry
 @Component
 struct ImagePcs {
@@ -11,6 +12,7 @@ struct ImagePcs {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .margin({left:"30%"})
+
         Text(this.warningInfo).fontSize(30).fontColor(Color.Red)
           .margin({top:2,bottom:2})
       Column(){

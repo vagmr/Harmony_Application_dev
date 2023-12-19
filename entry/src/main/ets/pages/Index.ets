@@ -43,6 +43,7 @@ struct Index {
   ]
   getData = async() =>{
     const res = await getSaying();
+    console.log(JSON.stringify(res));
       this.randomText = res.data.content
   }
 aboutToAppear(){

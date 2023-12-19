@@ -1,6 +1,6 @@
 // 引入包名
 import http from '@ohos.net.http';
-import RequestOptions from '../ets/constant/config';
+import RequestOptions, { comContentType } from '../ets/constant/config';
 import { Data } from "../ets/type/request/comon_res"
 
 export  enum RequestMethod {
@@ -11,16 +11,13 @@ export  enum RequestMethod {
 }
 
 /**
- * 创建一个HTTP请求实例，并使用指定的方法和数据向指定的URL发送HTTP请求。
- *
- * @param {string} url - 将要发送请求的URL。
- * @param {RequestMethod} [method=RequestMethod.GET] - HTTP请求方法。
- * @param {any} data - 需要发送的数据。
- * @return {Promise<Data<T>>} 如果请求成功，则返回一个解析后的响应数据的Promise,可加泛型
- * 如果请求失败，则返回一个带有错误信息的Promise。
+ * 这个函数发送一个HTTP请求，并返回一个解析为响应数据的Promise。
+ *  支持泛型，默认为get请求
+ * @param {RequestOptions} config - 请求的配置选项，目前支持url,method,data
+ * @returns {Promise<Data<T>>} 一个解析为响应数据的Promise。
  */
 export const requestInstance = <T>(config: RequestOptions) : Promise<Data<T>> => {
-    const { url, method = RequestMethod.GET, data } = config;
+    const { url, method = RequestMethod.GET, data ,header = { ContentType: comContentType.json } } = config;
     //返回一个promise对象
     return new Promise<Data<T>>  ((resolve, reject) => {
       // 每一个httpRequest对应一个HTTP请求任务，不可复用
@@ -37,12 +34,10 @@ export const requestInstance = <T>(config: RequestOptions) : Promise<Data<T>> =>
           method: method, // 可选，默认为http.RequestMethod.GET
           // 开发者根据自身业务需要添加header字段
           header: {
-            'Content-Type': 'application/json'
+            'Content-Type': header.ContentType,
           },
           // 当使用POST请求时此字段用于传递内容
-          extraData: {
-            "data": JSON.stringify(data),
-          },
+          extraData: data,
           // expectDataType: http.HttpDataType.STRING, // 可选，指定返回数据的类型
           expectDataType:http.HttpDataType.OBJECT,
           usingCache: true, // 可选，默认为true

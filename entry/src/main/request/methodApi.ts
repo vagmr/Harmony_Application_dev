@@ -1,5 +1,5 @@
 import { sayingType, wordType } from '../ets/type/request/comon_res'
-import { requestInstance } from './comRequest'
+import { requestInstance, } from './comRequest'
 
 
 export  const getSaying = () => {
